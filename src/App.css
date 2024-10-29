@@ -1,38 +1,79 @@
-.App {
+/* Main container to align everything centrally */
+.country-container {
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Adjusted to create a grid for the country cards */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Flexible grid */
+  gap: 15px;
+  justify-items: center; /* Center cards horizontally */
+  align-items: start; /* Align items to the start */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Media query for high resolutions to limit to max 7 columns */
+@media (min-width: 1200px) {
+  .country-grid {
+    grid-template-columns: repeat(7, 1fr); /* 7 columns on high resolutions */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Individual country card */
+.countryCard { /* Ensure this matches your component */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  width: 150px; /* Fixed width for uniformity */
 }
 
-.App-link {
-  color: #61dafb;
+.countryCard:hover {
+  transform: scale(1.05); /* Scale up slightly on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Styling the flag image */
+.country-flag {
+  width: 80px; /* Set a fixed width for the flags */
+  height: 50px; /* Fixed height to maintain consistency */
+  margin-bottom: 10px; /* Spacing between the flag and country name */
+}
+
+/* Styling for the country name */
+.countryCard p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Styling for the search input */
+.search-input {
+  width: 80%; /* Make the search bar responsive */
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Additional styles for responsive behavior */
+@media (max-width: 768px) {
+  .country-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+  .country-grid {
+    grid-template-columns: 1fr; /* 1 card per row on very small screens */
   }
 }
